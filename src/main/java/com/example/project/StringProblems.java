@@ -7,8 +7,10 @@ public class StringProblems{
     // endsLy("oddly") → true
     // endsLy("y") → false
     // endsLy("oddy") → false
-    public boolean endsLy(String x){
-            //implement code here
+    public boolean endsLy(String x) {
+        if(x.substring(x.length() - 2).equals("ly")) {
+            return true;
+        }
         return false;
     }
 
@@ -20,13 +22,14 @@ public class StringProblems{
     // conCat("dog", "cat") → "dogcat"
     // conCat("abc", "") → "abc"
     public String conCat(String s1, String s2){
-        //implement code here
-        return "";
+        if (s1.endsWith(s2.substring(0, 1))) {
+            return s1 + s2.substring(1);
+        }
+        return s1 + s2;
     }
 
     // Given a string, return a version without the first 2 chars. 
     // Except keep the first char if it is 'a' and keep the second char if it is 'b'.
-    // Except keep the first char if it is 'a' and keep the second char if it is 'b'. 
     // The string may be any length. Harder than it looks.
     // deFront("Hello") → "llo"
     // deFront("java") → "va"
@@ -35,8 +38,18 @@ public class StringProblems{
     // deFront("abee") -> "abee"
     // deFront("xbring") -> "bring"
     public String deFont(String s1){
-        //implement code here
-        return "";
+        String str = s1.substring(0, 2);
+        if (str.substring(0,1).equals("a")) {
+            if (str.substring(1,2).equals("b")) {
+                return s1;
+            }
+            return s1.substring(0, 1) + s1.substring(2);
+        } else {
+            if (str.substring(1,2).equals("b")) {
+                return s1.substring(1);
+            }
+        }
+        return s1.substring(2);
     }
 
     
@@ -47,7 +60,15 @@ public class StringProblems{
     // withoutX("xHi") → "Hi"
     // withoutX("Hxix") → "Hxi"
     public String withoutX(String s1){
-        return "";
+        if (s1.startsWith("x")) {
+            if (s1.endsWith("x")) {
+                return s1.substring(1, s1.length() - 1);
+            }
+            return s1.substring(1);
+        } else if (s1.endsWith("x")) {
+                return s1.substring(0, s1.length() - 1);
+        }
+        return s1;
     }
 
     // Given a string str, if the string starts with "f" return "Fizz".
